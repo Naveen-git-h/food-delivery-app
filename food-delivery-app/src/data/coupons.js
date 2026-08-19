@@ -1,0 +1,38 @@
+export const coupons = [
+  {
+    code: 'FOOD50',
+    type: 'flat',
+    value: 50,
+    minOrder: 200,
+    maxDiscount: null,
+    expired: false,
+    description: '₹50 off on orders above ₹200',
+  },
+  {
+    code: 'FIRSTORDER',
+    type: 'percent',
+    value: 20,
+    minOrder: 150,
+    maxDiscount: 100,
+    expired: false,
+    description: '20% off up to ₹100',
+  },
+  {
+    code: 'FREEDEL',
+    type: 'freeDelivery',
+    value: 0,
+    minOrder: 100,
+    maxDiscount: null,
+    expired: false,
+    description: 'Free delivery on orders above ₹100',
+  },
+  {
+    code: 'OLDDEAL',
+    type: 'flat',
+    value: 100,
+    minOrder: 100,
+    maxDiscount: null,
+    expired: true,
+    description: 'Expired coupon (for testing)',
+  },
+]
