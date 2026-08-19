@@ -8,7 +8,7 @@ A responsive food delivery web app built as a frontend interview assignment. Use
 - **Vite** — build tool and dev server
 - **React Router DOM** — client-side routing
 - **Tailwind CSS v4** — styling
-- **Context API** — state management (Cart, Toast)
+- **Context API** — state management (Cart)
 - **LocalStorage** — cart and order persistence (no real backend)
 
 ## Setup Instructions
