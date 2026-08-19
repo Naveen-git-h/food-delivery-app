@@ -17,11 +17,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Location bar */}
-      <div className="px-4 py-2 flex items-center gap-1 text-sm text-gray-600 bg-white border-b">
-        <span>📍</span>
-        <span>Hyderabad</span>
-      </div>
+      
 
       {/* Search bar */}
       <form onSubmit={handleSearchSubmit} className="px-4 py-4">
