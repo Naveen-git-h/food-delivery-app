@@ -7,9 +7,18 @@ const Restaurants = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [search, setSearch] = useState(searchParams.get('q') || '')
+  const [debouncedSearch, setDebouncedSearch] = useState(searchParams.get('q') || '')
   const [cuisineFilter, setCuisineFilter] = useState(searchParams.get('category') || 'All')
   const [sortBy, setSortBy] = useState('default')
   const [loading, setLoading] = useState(true)
+
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search)
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [search])
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 600)
@@ -41,7 +50,7 @@ const Restaurants = () => {
     }
 
     return result
-  }, [search, cuisineFilter, sortBy])
+  }, [debouncedSearch, cuisineFilter, sortBy])
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-4">

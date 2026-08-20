@@ -57,7 +57,6 @@ Context was chosen over Redux Toolkit for a 2-day scoped project: less boilerpla
 ## Features Not Implemented (due to time constraints)
 
 - Favorites functionality (button exists in data model, not wired to UI)
-- Debounced search (search is instant, not debounced)
 - URL-based filter state syncing beyond initial query params
 - Automated tests (unit/E2E)
 - Real-time order tracking (currently simulated via timer)
