@@ -8,7 +8,7 @@ A responsive food delivery web app built as a frontend interview assignment. Use
 - **Vite** — build tool and dev server
 - **React Router DOM** — client-side routing
 - **Tailwind CSS v4** — styling
-- **Context API** — state management (Cart, Toast)
+- **Context API** — state management (Cart)
 - **LocalStorage** — cart and order persistence (no real backend)
 
 ## Setup Instructions
@@ -35,7 +35,6 @@ A responsive food delivery web app built as a frontend interview assignment. Use
 Used **React Context API** instead of Redux or Zustand, split by domain:
 
 - **CartContext** — cart items, quantities, restaurant-lock (to support the "cart from another restaurant" confirmation), persisted to `localStorage`.
-- **ToastContext** — global toast notification trigger, used for success feedback (item added, coupon applied).
 
 Context was chosen over Redux Toolkit for a 2-day scoped project: less boilerplate, and splitting into two small contexts avoids the common "one giant re-rendering context" pitfall. Filters and search state are kept local to the pages that use them (Restaurants page) since they don't need to be shared globally.
 
@@ -54,7 +53,6 @@ Context was chosen over Redux Toolkit for a 2-day scoped project: less boilerpla
 - Order history with reorder functionality
 - Responsive navigation (desktop nav + mobile hamburger menu)
 - Cart persistence via localStorage
-- Toast notifications for key actions
 
 ## Features Not Implemented (due to time constraints)
 
