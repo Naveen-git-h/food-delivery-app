@@ -10,7 +10,6 @@ export const restaurants = [
     deliveryTime: '25-35 min',
     distance: '2.1 km',
     offer: '50% OFF up to ₹100',
-    isFavorite: false,
   },
   {
     id: 2,
@@ -23,7 +22,6 @@ export const restaurants = [
     deliveryTime: '20-30 min',
     distance: '1.5 km',
     offer: 'Free delivery',
-    isFavorite: false,
   },
   {
     id: 3,
@@ -36,7 +34,6 @@ export const restaurants = [
     deliveryTime: '30-40 min',
     distance: '3.2 km',
     offer: '20% OFF',
-    isFavorite: false,
   },
   {
     id: 4,
@@ -49,7 +46,6 @@ export const restaurants = [
     deliveryTime: '25-35 min',
     distance: '2.8 km',
     offer: null,
-    isFavorite: false,
   },
   {
     id: 5,
@@ -62,7 +58,6 @@ export const restaurants = [
     deliveryTime: '35-45 min',
     distance: '4.0 km',
     offer: '₹75 OFF above ₹300',
-    isFavorite: false,
   },
   {
     id: 6,
@@ -75,7 +70,6 @@ export const restaurants = [
     deliveryTime: '15-25 min',
     distance: '1.2 km',
     offer: null,
-    isFavorite: false,
   },
   {
     id: 7,
@@ -88,7 +82,6 @@ export const restaurants = [
     deliveryTime: '15-20 min',
     distance: '0.9 km',
     offer: 'Buy 1 Get 1',
-    isFavorite: false,
   },
   {
     id: 8,
@@ -101,7 +94,6 @@ export const restaurants = [
     deliveryTime: '30-40 min',
     distance: '3.5 km',
     offer: '10% OFF',
-    isFavorite: false,
   },
   {
     id: 9,
@@ -114,7 +106,6 @@ export const restaurants = [
     deliveryTime: '25-35 min',
     distance: '2.4 km',
     offer: null,
-    isFavorite: false,
   },
   {
     id: 10,
@@ -127,7 +118,6 @@ export const restaurants = [
     deliveryTime: '35-45 min',
     distance: '3.9 km',
     offer: '30% OFF up to ₹150',
-    isFavorite: false,
   },
 ]
 

@@ -13,6 +13,7 @@ const Header = () => {
     { to: '/', label: 'Home' },
     { to: '/restaurants', label: 'Restaurants' },
     { to: '/orders', label: 'My Orders' },
+    { to: '/favorites', label: 'Favorites' },
   ]
 
   const isActive = (path) => location.pathname === path

@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { restaurants, categories } from '../data/restaurants'
+import { useFavorites } from '../context/FavoritesContext'
 
 const Home = () => {
   const [search, setSearch] = useState('')
   const navigate = useNavigate()
+  const { isFavorite, toggleFavorite } = useFavorites()
 
   const featuredRestaurants = restaurants.slice(0, 6)
 
@@ -54,10 +56,20 @@ const Home = () => {
           {featuredRestaurants.map((r) => (
             <div
               key={r.id}
-              onClick={() => navigate(`/restaurants/${r.id}`)}
-              className="bg-white rounded-lg shadow-sm hover:shadow-md transition cursor-pointer overflow-hidden"
+              className="relative bg-white rounded-lg shadow-sm hover:shadow-md transition overflow-hidden"
             >
-              <img
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  toggleFavorite(r.id)
+                }}
+                className="absolute top-2 right-2 z-10 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-lg cursor-pointer"
+              >
+                 {isFavorite(r.id) ? '❤️' : '🤍'}
+              </button>
+
+              <div onClick={() => navigate(`/restaurants/${r.id}`)} className="cursor-pointer">
+                <img
                 src={r.image}
                 alt={r.name}
                 className="w-full h-36 object-cover"
@@ -81,6 +93,7 @@ const Home = () => {
                     {r.offer}
                   </p>
                 )}
+              </div>
               </div>
             </div>
           ))}

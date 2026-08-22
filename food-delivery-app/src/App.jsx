@@ -8,8 +8,8 @@ import Checkout from './pages/Checkout'
 import OrderSuccess from './pages/OrderSuccess'
 import TrackOrder from './pages/TrackOrder'
 import Orders from './pages/Orders'
+import Favorites from './pages/Favorites'
 import './index.css'
-
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +23,7 @@ function App() {
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/track-order/:id" element={<TrackOrder />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </BrowserRouter>
   )

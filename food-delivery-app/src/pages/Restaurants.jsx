@@ -2,23 +2,26 @@ import { useState, useEffect, useMemo } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { restaurants, categories } from '../data/restaurants'
 import Skeleton from '../components/common/Skeleton'
+import { useFavorites } from '../context/FavoritesContext'
 
 const Restaurants = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [search, setSearch] = useState(searchParams.get('q') || '')
-  const [debouncedSearch, setDebouncedSearch] = useState(searchParams.get('q') || '')
+   const [debouncedSearch, setDebouncedSearch] = useState(searchParams.get('q') || '')
   const [cuisineFilter, setCuisineFilter] = useState(searchParams.get('category') || 'All')
   const [sortBy, setSortBy] = useState('default')
   const [loading, setLoading] = useState(true)
+  const { isFavorite, toggleFavorite } = useFavorites()
+
 
    useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(search)
     }, 500)
-
     return () => clearTimeout(timer)
   }, [search])
+
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 600)
@@ -109,25 +112,35 @@ const Restaurants = () => {
           {filtered.map((r) => (
             <div
               key={r.id}
-              onClick={() => navigate(`/restaurants/${r.id}`)}
-              className="bg-white rounded-lg shadow-sm hover:shadow-md transition cursor-pointer overflow-hidden"
+              className="bg-white rounded-lg shadow-sm hover:shadow-md transition overflow-hidden relative"
             >
-              <img src={r.image} alt={r.name} className="w-full h-36 object-cover" />
-              <div className="p-3">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-semibold">{r.name}</h3>
-                  <span className="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded">
-                    ★ {r.rating}
-                  </span>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  toggleFavorite(r.id)
+                }}
+                className="absolute top-2 right-2 z-10 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-lg"
+              >
+                {isFavorite(r.id) ? '❤️' : '🤍'}
+              </button>
+              <div onClick={() => navigate(`/restaurants/${r.id}`)} className="cursor-pointer">
+                <img src={r.image} alt={r.name} className="w-full h-36 object-cover" />
+                <div className="p-3">
+                  <div className="flex justify-between items-start">
+                    <h3 className="font-semibold">{r.name}</h3>
+                    <span className="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                      ★ {r.rating}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">{r.cuisine.join(', ')}</p>
+                  <div className="flex justify-between text-sm text-gray-500 mt-2">
+                    <span>{r.deliveryTime}</span>
+                    <span>{r.distance}</span>
+                  </div>
+                  {r.offer && (
+                    <p className="text-xs text-orange-600 font-medium mt-2">{r.offer}</p>
+                  )}
                 </div>
-                <p className="text-sm text-gray-500 mt-1">{r.cuisine.join(', ')}</p>
-                <div className="flex justify-between text-sm text-gray-500 mt-2">
-                  <span>{r.deliveryTime}</span>
-                  <span>{r.distance}</span>
-                </div>
-                {r.offer && (
-                  <p className="text-xs text-orange-600 font-medium mt-2">{r.offer}</p>
-                )}
               </div>
             </div>
           ))}
